@@ -3,6 +3,7 @@
  *
  * Copyright (c) 1990, 1993 The Regents of the University of California.
  * Copyright (c) 2017 Mariusz Zaborski <oshogbo@FreeBSD.org>
+ * Copyright (c) 2024 Ziv Kedem <atxcorp101@gmail.com>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
