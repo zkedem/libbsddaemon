@@ -31,78 +31,15 @@
  * SUCH DAMAGE.
  */
 
-#include "bsddaemon.h"
+#include <errno.h>
+#include <fcntl.h>
+#include <paths.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/param.h>
 
-int
-daemonfd(int chdirfd, int nullfd)
-{
-	struct sigaction osa, sa;
-	pid_t newgrp;
-	int oerrno;
-	int osa_ok;
-
-	/* A SIGHUP may be thrown when the parent exits below. */
-	sigemptyset(&sa.sa_mask);
-	sa.sa_handler = SIG_IGN;
-	sa.sa_flags = 0;
-	osa_ok = sigaction(SIGHUP, &sa, &osa);
-
-	switch (fork()) {
-	case -1:
-		return (-1);
-	case 0:
-		break;
-	default:
-		/*
-		 * A fine point:  _exit(0), not exit(0), to avoid triggering
-		 * atexit(3) processing
-		 */
-		_exit(0);
-	}
-
-	newgrp = setsid();
-	oerrno = errno;
-	if (osa_ok != -1)
-		sigaction(SIGHUP, &osa, NULL);
-
-	if (newgrp == -1) {
-		errno = oerrno;
-		return (-1);
-	}
-
-	if (chdirfd != -1)
-		(void)fchdir(chdirfd);
-
-	if (nullfd != -1) {
-		(void)dup2(nullfd, STDIN_FILENO);
-		(void)dup2(nullfd, STDOUT_FILENO);
-		(void)dup2(nullfd, STDERR_FILENO);
-	}
-	return (0);
-}
-
-int
-daemon(int nochdir, int noclose)
-{
-	int chdirfd, nullfd, ret;
-
-	if (!noclose)
-		nullfd = open(_PATH_DEVNULL, O_RDWR, 0);
-	else
-		nullfd = -1;
-
-	if (!nochdir)
-		chdirfd = open("/", O_EXEC);
-	else
-		chdirfd = -1;
-
-	ret = daemonfd(chdirfd, nullfd);
-
-	if (chdirfd != -1)
-		close(chdirfd);
-
-	if (nullfd > 2)
-		close(nullfd);
-
-	return (ret);
-}
+#if !(defined(__FreeBSD__) || defined(_DEFAULT_SOURCE) || defined(_BSD_SOURCE) || defined(_XOPEN_SOURCE))
+	int daemonfd(int chdirfd, int nullfd);
+	int daemon(int nochdir, int noclose);
+#endif
