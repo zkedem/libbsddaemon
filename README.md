@@ -31,7 +31,10 @@ While I am aware of other implementations of what I am trying to achieve, they a
 + Familiarity. `daemon()` and `daemonfd()` are well-established in FreeBSD, and to an extent in GNU/Linux as well. It is better to leverage an existing API that is well-known and proven rather than reinventing the wheel.
 
 ## Goals
-The overarching goal of libbsddaemon is to create a library with daemonization routines that are init system-agnostic, portable across all POSIX-compliant OSes, and easy to use and integrate. Bearing this in mind, I hope to keep the functionality of libbsddaemon as close as possible to its counterpart in FreeBSD's libc as both implementations evolve over time.
+The overarching goal of libbsddaemon is to create a library with daemonization routines that are init system-agnostic, portable across all POSIX-compliant OSes, and easy to use and integrate. Bearing this in mind, I hope to keep the functionality of libbsddaemon as close as possible to its original FreeBSD counterpart as both implementations evolve over time.
+
+## Credits
+libbsddaemon is based on [daemon.c](https://cgit.freebsd.org/src/tree/lib/libc/gen/daemon.c) from FreeBSD's libc.
 
 [^1]: [daemon(7) — Linux manual page](https://man7.org/linux/man-pages/man7/daemon.7.html)
 [^2]: [paulgorman.org/technical](https://paulgorman.org/technical/freebsd-init.txt.html)
