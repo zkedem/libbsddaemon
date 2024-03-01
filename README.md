@@ -36,6 +36,6 @@ The overarching goal of libbsddaemon is to create a library providing daemonizat
 ## Credits
 libbsddaemon is based on [daemon.c](https://cgit.freebsd.org/src/tree/lib/libc/gen/daemon.c) from FreeBSD's libc.
 
-[^1]: [daemon(7) — Linux manual page](https://man7.org/linux/man-pages/man7/daemon.7.html)
+[^1]: [daemon(7) - Linux manual page](https://man7.org/linux/man-pages/man7/daemon.7.html)
 [^2]: [paulgorman.org/technical](https://paulgorman.org/technical/freebsd-init.txt.html)
 [^3]: [c - warning: implicit declaration of function 'daemon' - Stack Overflow](https://stackoverflow.com/questions/24161945/warning-implicit-declaration-of-function-daemon)
