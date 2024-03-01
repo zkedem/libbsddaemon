@@ -31,6 +31,9 @@
  * SUCH DAMAGE.
  */
 
+#ifndef LIBBSDDAEMON_H
+#define LIBBSDDAEMON_H
+
 #include <errno.h>
 #include <fcntl.h>
 #include <paths.h>
@@ -39,7 +42,23 @@
 #include <unistd.h>
 #include <sys/param.h>
 
-#if !(defined(__FreeBSD__) || defined(_DEFAULT_SOURCE) || defined(_BSD_SOURCE) || defined(_XOPEN_SOURCE))
+/*
+ * Because daemonfd() and daemon() are already declared in FreeBSD's stdlib.h,
+ * using libbsddaemon on that platform would cause a conflict between both sets
+ * of functions and could lead to a compilation error. However, as programs
+ * using libbsddaemon are expected to be cross-platform, bsddaemon.h can be
+ * included on a FreeBSD installation even though it will basically do nothing.
+ * On glibc-based systems, daemon is also declared in unistd.h when either of
+ * the macros _BSD_SOURCE or _XOPEN_SOURCE are defined, though these have been
+ * deprecated in favor of _DEFAULT_SOURCE. Therefore, both functions are
+ * available on GNU/Linux unless the daemon() from unistd.h has been enabled,
+ * in which case this library will only provide daemonfd().
+ */
+#ifndef __FreeBSD__
 	int daemonfd(int chdirfd, int nullfd);
-	int daemon(int nochdir, int noclose);
+	#if !(defined(_DEFAULT_SOURCE) || defined(_BSD_SOURCE) || defined(_XOPEN_SOURCE))
+		int daemon(int nochdir, int noclose);
+	#endif
 #endif
+
+#endif /* !LIBBSDDAEMON_H */
