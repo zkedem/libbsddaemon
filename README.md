@@ -22,7 +22,7 @@ Creating a daemon, or background process, on POSIX-compliant operating systems i
 
 The actual steps needed to daemonize a program are dependent on the particular init system in use by the OS (this is foretold by step 8). The above steps are typical of a daemon written for an OS with a System V-style init. While systemd and other init systems will recognize System V-compatible daemons, none of the above steps are required, and some may even cause the init system to malfunction[^1]. Moreover, POSIX does not specify a standard init system, and since daemons depend on the particularities of init, this makes it challenging to create a truly cross-POSIX daemon.
 
-FreeBSD provides two functions in its C standard library, `daemon()` and `daemonfd()`, that can provide much of the heavy lifting needed to initialize a daemon. They perform some of the above listed steps, which works well with FreeBSD's rc.d init system[^2]. The `daemon()` function is replicated in the GNU C library (glibc) for compatibility with BSD. These functions are not part of POSIX, likely for reasons mentioned earlier.
+FreeBSD provides two functions in its C standard library, `daemon()` and `daemonfd()`, that can provide much of the heavy lifting needed to initialize a daemon. They perform some of the above listed steps, which works well with FreeBSD's rc.d init system[^2]. The `daemon()` function is replicated in the GNU C library (glibc) for compatibility with BSD. Despite their usefulness, these functions are not part of POSIX, likely for reasons mentioned earlier.
 
 While I am aware of other implementations of what I am trying to achieve, they all lack at least one of these attributes:
 
