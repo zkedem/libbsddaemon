@@ -11,9 +11,9 @@ Creating a daemon, or background process, on POSIX-compliant operating systems i
 5. Creating a background process with `fork()`.
 6. Creating a new session with `setsid()`.
 7. Calling `fork()` a second time.
-8. Exiting the original background process, so that init/PID \1 becomes our daemon's parent.
+8. Exiting the original background process, so that init/PID 1 becomes our daemon's parent.
 9. Connecting /dev/null to standard input, output, and error.
-10. Resetting the umask to \0.
+10. Resetting the umask to 0.
 11. Navigating to the root directory.
 12. Saving the daemon's PID to a file to prevent multiple invocations.
 13. Dropping privileges (optional).
@@ -33,6 +33,5 @@ While I am aware of other implementations of what I am trying to achieve, they a
 ## Goals
 The overarching goal of libbsddaemon is to create a library with daemonization routines that are init system-agnostic, portable across all POSIX-compliant OSes, and easy to use and integrate. Bearing this in mind, I hope to keep the functionality of libbsddaemon as close as possible to its counterpart in FreeBSD's libc as both implementations evolve over time.
 
-## References
 [^1]: [daemon(7) — Linux manual page](https://man7.org/linux/man-pages/man7/daemon.7.html)
 [^2]: [paulgorman.org/technical](https://paulgorman.org/technical/freebsd-init.txt.html)
