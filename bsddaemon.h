@@ -55,6 +55,8 @@
  * in which case this library will only provide daemonfd().
  */
 #ifndef __FreeBSD__
+	/* O_EXEC may not be defined outside FreeBSD */
+	#define O_EXEC 0x00040000
 	int daemonfd(int chdirfd, int nullfd);
 	#if !(defined(_DEFAULT_SOURCE) || defined(_BSD_SOURCE) || defined(_XOPEN_SOURCE))
 		int daemon(int nochdir, int noclose);
