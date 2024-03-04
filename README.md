@@ -14,7 +14,7 @@ Creating a daemon, or background process, on POSIX-compliant operating systems i
 8. Exiting the original background process, so that init/PID 1 becomes our daemon's parent.
 9. Connecting /dev/null to standard input, output, and error.
 10. Resetting the umask to 0.
-11. Navigating to the root directory.
+11. Navigating to the root directory (/).
 12. Saving the daemon's PID to a file to prevent multiple invocations.
 13. Dropping privileges (optional).
 14. Informing the original process that daemon initialization has completed.
