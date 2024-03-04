@@ -51,8 +51,10 @@ You can use libbsddaemon in any program by including the header file and linking
 ...
 int main()
 {
+	// This code runs in the foreground.
 	...
 	daemon(0, 0);
+	// And this code runs in the background.
 	...
 }
 ```
