@@ -55,7 +55,7 @@
  * in which case this library will only provide daemonfd().
  */
  
-/* O_EXEC may not be defined outside FreeBSD */
+/* O_EXEC may not be defined otherwise outside FreeBSD */
 #define O_EXEC 0x00040000
 
 int daemonfd(int chdirfd, int nullfd);
