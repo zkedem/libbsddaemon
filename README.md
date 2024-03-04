@@ -67,8 +67,10 @@ cc program.c -o program -lbsddaemon
 int daemonfd(int chdirfd, int nullfd);
 ```
 Creates daemon in given working directory and redirects standard input, output, and error to /dev/null using a given file descriptor, where:
-+ `chdirfd` is the file descriptor for the working directory. If it is set to -1, the working directory is not changed.
-+ `nullfd` is a file descriptor for /dev/null. If it is set to -1, standard input, output, and error are not redirected to /dev/null or closed.
++ `chdirfd` is the file descriptor for the working directory.
+  + If it is set to -1, the working directory is not changed.
++ `nullfd` is a file descriptor for /dev/null.
+  + If it is set to -1, standard input, output, and error are not redirected to /dev/null or closed.
 
 ```
 int daemon(int nochdir, int noclose);
