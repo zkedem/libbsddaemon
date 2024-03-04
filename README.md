@@ -48,6 +48,13 @@ sudo make uninstall
 You can use libbsddaemon in any program by including the header file and linking against it:
 ```
 #include <bsddaemon.h>
+...
+int main()
+{
+	...
+	daemon(0, 0);
+	...
+}
 ```
 ```
 cc program.c -o program -lbsddaemon
