@@ -33,6 +33,26 @@ While I am aware of other implementations of what I am trying to achieve, they a
 ## Goals
 The overarching goal of libbsddaemon is to create a library providing daemonization routines that is portable across all POSIX-compliant OSes and easy to use and integrate. Bearing this in mind, I hope to keep the functionality of libbsddaemon as close as possible to its original FreeBSD counterpart as both implementations evolve over time.
 
+## Usage
+libbsddaemon can be built and installed using the makefile:
+```
+make
+sudo make install
+```
+
+To uninstall, issue this command:
+```
+sudo make uninstall
+```
+
+You can use libbsddaemon in any program by including the header file and linking against it:
+```
+#include <bsddaemon.h>
+```
+```
+cc program.c -o program -lbsddaemon
+```
+
 ## Credits
 libbsddaemon is based on [daemon.c](https://cgit.freebsd.org/src/tree/lib/libc/gen/daemon.c) from FreeBSD's libc.
 
