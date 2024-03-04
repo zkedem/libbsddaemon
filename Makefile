@@ -2,7 +2,9 @@
 
 NAME = bsddaemon
 OUTFILE = lib$(NAME).so
-INSTALLPATH = /usr/local/lib
+PREFIX = /usr/local
+LIBPATH = $(PREFIX)/lib
+HEADERPATH = $(PREFIX)/include
 
 build: $(NAME).h
 	cc -shared -fPIC -o $(OUTFILE) $(NAME).c
@@ -11,7 +13,9 @@ clean:
 	rm -f $(OUTFILE)
 
 install:
-	install $(OUTFILE) $(INSTALLPATH)
+	cp $(OUTFILE) $(LIBPATH)
+	cp $(NAME).h $(HEADERPATH)
 
 uninstall:
-	rm -f $(INSTALLPATH)/$(OUTFILE)
+	rm -f $(LIBPATH)/$(OUTFILE)
+	rm -f $(HEADERPATH)/$(NAME).h
