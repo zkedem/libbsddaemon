@@ -4,7 +4,7 @@ NAME = bsddaemon
 CC = cc
 VERSION = 1.0.0
 OUTFILE = lib$(NAME).so
-PREFIX = /usr/local
+PREFIX = /usr
 LIBPATH = $(PREFIX)/lib
 HEADERPATH = $(PREFIX)/include
 
