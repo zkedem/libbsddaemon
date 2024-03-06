@@ -40,8 +40,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
-#include <sys/param.h>
- 
+
 /* O_EXEC may not be defined otherwise outside FreeBSD */
 #define O_EXEC 0x00040000
 
