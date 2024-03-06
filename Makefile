@@ -1,13 +1,14 @@
 .POSIX:
 
 NAME = bsddaemon
+CC = cc
 OUTFILE = lib$(NAME).so
 PREFIX = /usr/local
 LIBPATH = $(PREFIX)/lib
 HEADERPATH = $(PREFIX)/include
 
 build: $(NAME).h
-	cc -shared -fPIC -o $(OUTFILE) $(NAME).c
+	$(CC) -shared -fPIC -o $(OUTFILE) $(NAME).c
 
 clean:
 	rm -f $(OUTFILE)
