@@ -31,6 +31,16 @@
  * SUCH DAMAGE.
  */
 
+/*
+ * Changes from the original FreeBSD version from 2017:
+ * - Calls to __libc_sigaction() have been replaced by calls to sigaction().
+ * - Calls to _dup2(), _open(), and _close() have been replaced by calls to
+ *   their non-underscored equivalents.
+ * - namespace.h, un-namespace.h, and libc_private.h are not included.
+ * - All prerequisite includes have been moved into bsddaemon.h.
+ * - O_EXEC is defined in bsddaemon.h for non-FreeBSD systems.
+ * The comments and coding style of the original daemon.c have been preserved.
+ */
 #include "bsddaemon.h"
 
 int
