@@ -71,8 +71,8 @@ Creates daemon in given working directory and redirects standard input, output, 
   + If it is set to -1, the working directory is not changed.
 + `nullfd` is a file descriptor for /dev/null.
   + If it is set to -1, standard input, output, and error are not redirected to /dev/null or closed.
-Returns 0 on success. On error, -1 is returned and the global variable errno is set appropriately.
-The value of errno will correspond to an error of `fork()`, `open()`, or `setsid()`.
+
+Returns 0 on success. On error, -1 is returned and the global variable errno is set appropriately. The value of errno will correspond to an error of `fork()`, `open()`, or `setsid()`.
 
 ```
 int daemon(int nochdir, int noclose);
@@ -80,8 +80,8 @@ int daemon(int nochdir, int noclose);
 Creates daemon, optionally without changing the working directory or redirecting standard input, output, and error to /dev/null, where:
 + If `nochdir` is set to 0, the working directory is changed to the root directory (/).
 + If `noclose` is set to 0, the standard input, output, and error are redirected to /dev/null and closed.
-Returns 0 on success. On error, -1 is returned and the global variable errno is set appropriately.
-The value of errno will correspond to an error of `fork()`, `open()`, or `setsid()`.
+
+Returns 0 on success. On error, -1 is returned and the global variable errno is set appropriately. The value of errno will correspond to an error of `fork()`, `open()`, or `setsid()`.
 
 ## Credits
 libbsddaemon is based on [daemon.c](https://cgit.freebsd.org/src/tree/lib/libc/gen/daemon.c) from FreeBSD's libc.
